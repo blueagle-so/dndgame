@@ -17,7 +17,6 @@ namespace dnd{
         std::string name;
         dice die;
         std::map <int,dnd::lvlup> lmap;
-        std::map<std::string, std::string> traits;
         std::vector<std::string> prof;
         };
         typedef std::map<std::string, Class> cmap;

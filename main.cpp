@@ -11,7 +11,7 @@
 
 int dndgame(int argc, char* argv[]) {
   dnd::creature monster("goblin",15,"neutral evil",7,'S',30,"humanoid",8,14,10,10,8,8);
-   dnd::character player("Vladislak Marsk","FIGHTER","HIGH ELF","ACOLYTE",1,10,10,10,10,10,10,false,1);
+   dnd::character player("Vladislak Marsk","WIZARD","HIGH ELF","ACOLYTE",1,10,10,10,10,10,10,false,1);
   player.setWeapon("LONGSWORD");
   player.setArmor("LEATHER");
   int dp,cp,dg,cg,ap,ag;
