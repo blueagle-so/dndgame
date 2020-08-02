@@ -586,7 +586,8 @@ void dnd::character::setBG(const std::string &name) {
 void dnd::character::setClass(const std::string &name){
      classes::Class x = classes::classs[name];
 
-     hp+=x.die.nums;
+     maxhp+=x.die.nums+(abilities.at("CON")-10)/2;
+     hp=maxhp;
      for(auto& item:x.lmap)
       {
         std::cout << "level "<< item.second.lvl

@@ -97,6 +97,7 @@ namespace dnd {
         std::vector<std::string> misc = {}; ///Other items
         unsigned short proBonus = 2;
         std::map<std::string, std::string> traits;
+        std::map<std::string, std::string> feats;
         std::vector<std::string> proficiencies;
         std::vector<std::string> languages = {"COMMON"};
         std::vector<std::string> saves;
