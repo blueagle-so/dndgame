@@ -8,8 +8,10 @@ V Makefile target
 V not use get/setAC()
 V race class(profession)
   background
-  defence();
-  hindrance AC
+V defence();
+V hindrance AC(use getAC)
+V combat code(Polymorphism)(cp dp   cg dg поменять) переделать вывод
+  levelUp()     proBonus,clevel,hp,maxhp,cclass
 
   class Item
   {

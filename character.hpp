@@ -74,13 +74,19 @@ namespace dnd {
 
         int damageRoll(bool mod = true);
 
-        int defense();
-
         int rollSkill(const std::string &skill);
 
         int save(const std::string &file) const;
 
         int load(const std::string &file);
+
+        short getAC() /*const*/ ;
+
+        int getLevel() const;
+
+        void levelUp();
+
+        int getGp();
 
         std::vector<std::string> getTraits();
 
@@ -95,7 +101,7 @@ namespace dnd {
 
         std::vector<std::string> equipment = {"FISTS", "UNARMORED", "UNSHIELDED"}; ///Equipped items
         std::vector<std::string> misc = {}; ///Other items
-        unsigned short proBonus = 2;
+        unsigned short proBonus = 0;
         std::map<std::string, std::string> traits;
         std::map<std::string, std::string> feats;
         std::vector<std::string> proficiencies;

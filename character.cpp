@@ -177,21 +177,71 @@ std::string dnd::character::getArmor() {
     return equipment[1];
 }
 
-int dnd::character::defense(){
 
-    //std::string armor = getArmor();
-    //armor::Armor x = armor::armors[armor];
-    int defense=armor::armors[equipment[1]].baseAC;
-    for(auto& item :proficiencies )
-       if (item==armor::armors[equipment[1]].name)
-       //std::cout << item << std::endl;
-
-    defense+=(armor::armors[equipment[1]].dexMax<(abilities.at("DEX")-10)/2) ? armor::armors[equipment[1]].dexMax : (abilities.at("DEX")-10)/2;
-    return defense;
-
-
-
+short dnd::character::getAC() /*const*/ {
+/*
+void Character::levelUp() {
+ if (this->getLevel() != 20) {
+  this->characterLevel++;
+  int conModifier = (this->getCharacterAttr()->getConstitution() - 10) / 2;
+    if (conModifier <= 0) conModifier = 0;
+    vector<int> roll = GameData::gameDice->roll("1d10");
+     int hitPointIncrease = modifier(roll[0], conModifier);
+    if (hitPointIncrease < 1) hitPointIncrease = 1;
+   this->setHitPoint(this->getHitPoint() + hitPointIncrease);
+    vector<int> attackBonus;
+     attackBonus.push_back(this->getLevel());
+     if (this->getLevel() - 5 > 0) {
+       attackBonus.push_back(this->getLevel() - 5);
+      }
+      else {
+      attackBonus.push_back(0);
+       }
+     if (this->getLevel() - 10 > 0) {
+      attackBonus.push_back(this->getLevel() - 10);
+      }
+     else {
+     attackBonus.push_back(0);
+     }
+     if (this->getLevel() - 15 > 0) {
+     attackBonus.push_back(this->getLevel() - 15);
+     }
+     else {
+     attackBonus.push_back(0);
+     }
+      this->setAttackBonus(attackBonus);
+          }
+      Notify();
 }
+
+
+*/
+
+
+   std::string armor = getArmor();
+       //armor::Armor x = armor::armors[armor];
+           int defense=armor::armors[equipment[1]].baseAC;
+               for(auto& item :proficiencies )
+                      if (item==armor::armors[equipment[1]].name)
+                             //std::cout << item << std::endl;
+
+                                defense+=(armor::armors[equipment[1]].dexMax<(abilities.at("DEX")-10)/2) ? armor::armors[equipment[1]].dexMax : (abilities.at("DEX")-10)/2;
+
+                                ac=defense;
+  //                                   return defense;
+
+
+
+
+
+
+
+
+
+  return ac;
+}
+
+
 
 int dnd::character::attackRoll(){
 
@@ -251,6 +301,12 @@ int dnd::character::rollSkill(const std::string &skill) {
 
     return d20.roll() + x;
 }
+
+int dnd::character::getLevel() const {
+          return this->clevel;
+}
+
+
 
 int dnd::character::save(const std::string &file) const {
     std::ofstream out;
@@ -551,6 +607,70 @@ int dnd::character::load(const std::string &file) {
     }
 }
 
+void dnd::character::levelUp() {
+  /*if (this->getLevel() != 20) {
+   this->characterLevel++;
+   int conModifier = (this->getCharacterAttr()->getConstitution() - 10) / 2;
+   if (conModifier <= 0) conModifier = 0;
+    vector<int> roll = GameData::gameDice->roll("1d10");
+    int hitPointIncrease = modifier(roll[0], conModifier);
+       if (hitPointIncrease < 1) hitPointIncrease = 1;
+        this->setHitPoint(this->getHitPoint() + hitPointIncrease);
+       vector<int> attackBonus;
+       attackBonus.push_back(this->getLevel());
+        if (this->getLevel() - 5 > 0) {
+        attackBonus.push_back(this->getLevel() - 5);
+          }
+        else {
+     attackBonus.push_back(0);
+     }
+    if (this->getLevel() - 10 > 0) {
+     attackBonus.push_back(this->getLevel() - 10);
+         }
+        else {
+       attackBonus.push_back(0);
+        }
+        if (this->getLevel() - 15 > 0) {
+       attackBonus.push_back(this->getLevel() - 15);
+       }
+       else {
+                                                                            attackBonus.push_back(0);
+                                                                                 }
+                                                                           this->setAttackBonus(attackBonus);
+                                                                                     }
+*/
+
+
+
+
+
+
+  classes::Class x = classes::classs[cclass];
+
+     hpmax+=x.die.nums+(abilities.at("CON")-10)/2;
+     hp=hpmax;
+     for(auto& item:x.lmap)
+      {
+              std::cout << "level "<< item.second.lvl
+              <<  " prof bonus "<<item.second.proBonus
+              << " : "/*<< item.second.prof[0]*/;
+              //<< item.second.prof[1]<< std::endl;
+              //for(int i=0;i<item.second.prof.size();i++)
+              // std::cout<< item.second.prof[i] << "   ";
+              // for(std::string v : item.second.prof)
+              //   std::cout<< v <<", ";
+
+              // proBonus=item.proBonus;
+             // if (i>=clevel)break;
+             // std::cout<< std::endl;
+        }
+         //for(auto it = x.lvlup.begin(); it != x.levelup.end(); ++it)
+         //    std::cout << it->first << " : " << /*it->second <<*/ std::endl;
+
+//         proficiencies.insert(proficiencies.end(), x.prof.begin(), x.prof.end());}
+
+}
+
 void dnd::character::setRace(const std::string &name) {
     /**
      * Sets the race and abilities and stuff
@@ -584,30 +704,33 @@ void dnd::character::setBG(const std::string &name) {
     misc.insert(misc.end(), x.equip.begin(), x.equip.end());
 }
 void dnd::character::setClass(const std::string &name){
-     classes::Class x = classes::classs[name];
+     //classes::Class x = classes::classs[name];
+    levelUp();
+     //maxhp+=x.die.nums+(abilities.at("CON")-10)/2;
+     //hp=maxhp;
+    // for(auto& item:x.lmap)
+     // {
+        //std::cout << "level "<< item.second.lvl
+        //  <<  " prof bonus "<<item.second.proBonus
+                // << " : "/*<< item.second.prof[0]*/;
+                 ///* << item.second.prof[1]<< std::endl;*/ //<D0><92><D1><8B>
+                //for(int i=0;i<item.second.prof.size();i++)
+                // std::cout<< item.second.prof[i] << "   ";
+         // for(std::string v : item.second.prof)
+      //   std::cout<< v <<", ";
 
-     maxhp+=x.die.nums+(abilities.at("CON")-10)/2;
-     hp=maxhp;
-     for(auto& item:x.lmap)
-      {
-        std::cout << "level "<< item.second.lvl
-          <<  " prof bonus "<<item.second.proBonus
-          << " : "/*<< item.second.prof[0]*/;
-         /* << item.second.prof[1]<< std::endl;*/ //<D0><92><D1><8B>
-         //for(int i=0;i<item.second.prof.size();i++)
-          // std::cout<< item.second.prof[i] << "   ";
-          for(std::string v : item.second.prof)
-            std::cout<< v <<", ";
-
-          // proBonus=item.proBonus;
-     // if (i>=clevel)break;
-          std::cout<< std::endl;
-      }
+                // proBonus=item.proBonus;
+                // if (i>=clevel)break;
+         // std::cout<< std::endl;
+      //}
       //for(auto it = x.lvlup.begin(); it != x.levelup.end(); ++it)
         //    std::cout << it->first << " : " << /*it->second <<*/ std::endl;
 
-     proficiencies.insert(proficiencies.end(), x.prof.begin(), x.prof.end());
+     //proficiencies.insert(proficiencies.end(), x.prof.begin(), x.prof.end());
 }
 std::vector<std::string> dnd::character::getTraits(){
 return proficiencies;
+}
+int dnd::character::getGp(){
+return gp;
 }
