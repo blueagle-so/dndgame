@@ -126,11 +126,11 @@ void dnd::character::delTrait(const std::string &name) {
 }
 
 void dnd::character::addProf(const std::string &name) {
-    proficiencies.push_back(name);
+//    proficiencies.push_back(name);
 }
 
 void dnd::character::delProf(const std::string &name) {
-    proficiencies.erase(remove(proficiencies.begin(), proficiencies.end(), name), proficiencies.end());
+  //  proficiencies.erase(remove(proficiencies.begin(), proficiencies.end(), name), proficiencies.end());
 }
 
 void dnd::character::addItem(const std::string &name) {
@@ -357,7 +357,7 @@ int dnd::character::save(const std::string &file) const {
 
         if (!proficiencies.empty()) {
             for (int i = 0; i < proficiencies.size(); ++i) {
-                out << proficiencies[i];
+                //out << proficiencies[i];
 
                 if (i == proficiencies.size() - 1) {
                     out << "\n";
@@ -531,7 +531,7 @@ int dnd::character::load(const std::string &file) {
         getline(fin, tmp);
         while ((pos = tmp.find(delim)) != std::string::npos) {
             token = tmp.substr(0, pos);
-            proficiencies.push_back(token);
+            //proficiencies.push_back(token);
             tmp.erase(0, pos + delim.length());
         }
 
@@ -646,14 +646,20 @@ void dnd::character::levelUp() {
 
 
   classes::Class x = classes::classs[cclass];
-
-     hpmax+=x.die.nums+(abilities.at("CON")-10)/2;
+  clevel++;
+  if (getLevel() == 1){
+     hpmax=x.die.nums+(abilities.at("CON")-10)/2;
      hp=hpmax;
-     for(auto& item:x.lmap)
+      for(auto i : x.prof)
+            proficiencies.insert(i);}
+     //proficiencies.insert(proficiencies.end(), x.prof.begin(), x.prof.end());}
+  /*
+  for(auto& item:x.lmap)
       {
               std::cout << "level "<< item.second.lvl
-              <<  " prof bonus "<<item.second.proBonus
-              << " : "/*<< item.second.prof[0]*/;
+              <<  " prof bonus "<<item.second.proBonus<< std::endl;
+              //<< " : "<< item.second.prof[0];
+
               //<< item.second.prof[1]<< std::endl;
               //for(int i=0;i<item.second.prof.size();i++)
               // std::cout<< item.second.prof[i] << "   ";
@@ -663,11 +669,12 @@ void dnd::character::levelUp() {
               // proBonus=item.proBonus;
              // if (i>=clevel)break;
              // std::cout<< std::endl;
-        }
-         //for(auto it = x.lvlup.begin(); it != x.levelup.end(); ++it)
-         //    std::cout << it->first << " : " << /*it->second <<*/ std::endl;
+        }*/
+        // for(auto it = x.lvlup.begin(); it != x.lvlup.end(); ++it)
+          //   std::cout << it->first << " : " << /*it->second <<*/ std::endl;
 
 //         proficiencies.insert(proficiencies.end(), x.prof.begin(), x.prof.end());}
+
 
 }
 
@@ -692,7 +699,8 @@ void dnd::character::setRace(const std::string &name) {
     speed = x.speed;
 
     traits.insert(x.traits.begin(), x.traits.end());
-    proficiencies.insert(proficiencies.end(), x.prof.begin(), x.prof.end());
+    for(auto i : x.prof)
+    proficiencies.insert(i);
 }
 
 void dnd::character::setBG(const std::string &name) {
@@ -700,7 +708,9 @@ void dnd::character::setBG(const std::string &name) {
 
     gp = x.gp;
 
-    proficiencies.insert(proficiencies.end(), x.prof.begin(), x.prof.end());
+    for(auto i : x.prof)
+       proficiencies.insert(i);
+    //proficiencies.insert(proficiencies.end(), x.prof.begin(), x.prof.end());
     misc.insert(misc.end(), x.equip.begin(), x.equip.end());
 }
 void dnd::character::setClass(const std::string &name){
@@ -728,7 +738,7 @@ void dnd::character::setClass(const std::string &name){
 
      //proficiencies.insert(proficiencies.end(), x.prof.begin(), x.prof.end());
 }
-std::vector<std::string> dnd::character::getTraits(){
+std::set<std::string> dnd::character::getTraits(){
 return proficiencies;
 }
 int dnd::character::getGp(){

@@ -20,6 +20,7 @@
 #include <utility>
 #include <cmath>
 #include <algorithm>
+#include <set>
 
 namespace dnd {
     class character : public creature {
@@ -88,7 +89,7 @@ namespace dnd {
 
         int getGp();
 
-        std::vector<std::string> getTraits();
+        std::set<std::string> getTraits();
 
     private:
         unsigned long uid = 0;
@@ -104,7 +105,7 @@ namespace dnd {
         unsigned short proBonus = 0;
         std::map<std::string, std::string> traits;
         std::map<std::string, std::string> feats;
-        std::vector<std::string> proficiencies;
+        std::set<std::string> proficiencies;
         std::vector<std::string> languages = {"COMMON"};
         std::vector<std::string> saves;
         std::vector<std::string> conditions;
