@@ -219,24 +219,16 @@ void Character::levelUp() {
 
 
    std::string armor = getArmor();
-       //armor::Armor x = armor::armors[armor];
-           int defense=armor::armors[equipment[1]].baseAC;
-               for(auto& item :proficiencies )
-                      if (item==armor::armors[equipment[1]].name)
-                             //std::cout << item << std::endl;
+   //armor::Armor x = armor::armors[armor];
+   int defense=armor::armors[equipment[1]].baseAC;
+   for(auto& item :proficiencies )
+   if (item==armor::armors[equipment[1]].name)
+   //std::cout << item << std::endl;
 
-                                defense+=(armor::armors[equipment[1]].dexMax<(abilities.at("DEX")-10)/2) ? armor::armors[equipment[1]].dexMax : (abilities.at("DEX")-10)/2;
+   defense+=(armor::armors[equipment[1]].dexMax<(abilities.at("DEX")-10)/2) ? armor::armors[equipment[1]].dexMax : (abilities.at("DEX")-10)/2;
 
-                                ac=defense;
+  ac=defense;
   //                                   return defense;
-
-
-
-
-
-
-
-
 
   return ac;
 }

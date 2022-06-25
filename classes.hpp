@@ -5,6 +5,7 @@
 
 #include <map>
 #include <vector>
+#include <unordered_map>
 namespace dnd{
    struct lvlup{
      int lvl;
@@ -16,6 +17,7 @@ namespace dnd{
       struct Class{
         std::string name;
         dice die;
+        //std::unordered_map<Class*, int, ClassHasher> classes;
         std::map <int,dnd::lvlup> lmap;
         std::vector<std::string> prof;
         };

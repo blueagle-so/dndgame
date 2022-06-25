@@ -15,7 +15,7 @@ int dndgame(int argc, char* argv[]) {
    player.setWeapon("LONGSWORD");
   player.setArmor("LEATHER");
   move = &monster;
-  int dp,cp,dg,cg,ap,ag;
+  int attack,demage;
   const std::string red("\033[0;31m");
   const std::string yellow("\033[0;33m");
   const std::string reset("\033[0m");
@@ -40,68 +40,43 @@ for(auto i : tr)
   //std::cout<<player.getHP()<<std::endl;
 //std::cout<<dnd::d6.nums<<std::endl;
  // std::cout<<player.defense()<<std::endl;
-  bool mod=false;
+//minimax(0,demage,true,attack,7) ;
+
+
+bool mod=false;
   while(1){
-    mod=!mod;
-    /*
-    if(mod){
-    cp=player.attackRoll();
-    dp=player.damageRoll();
-    //ap=monster.getAC();
-    move=&monster;
-    }else{
-    cp=dnd::d20.roll()+4;
-    dp=dnd::d6.roll()+2;
-    //ap=player.getAC();
-    move=&player;
-    }
-*/
-   cp=mod?player.attackRoll():(dnd::d20.roll()+4);
-   dp=mod?player.damageRoll():(dnd::d6.roll()+2);
+   mod=!mod;
+   attack=mod?player.attackRoll():(dnd::d20.roll()+4);
+   demage=mod?player.damageRoll():(dnd::d6.roll()+2);
     //ap=monster.getAC();
    move=mod?&monster:&player;
 
 
-    if(cp < move->getAC()){
+    if(attack < move->getAC()){
 move=mod?&player:&monster;
  std::cout << move->getName() <<" attack ";
  move=!mod?&player:&monster;
  std::cout <<   move->getName()    <<yellow <<" miss("
- << cp <<")"<<reset << std::endl;
+ << attack <<")"<<reset << std::endl;
 
     }else{
 
-      move->damage(dp);
+      move->damage(demage);
       move=mod?&player:&monster;
      std::cout << move->getName() <<" attack ";
      //move=(mod)?(dnd::character*)&monster:&player;
      move=!mod?&player:&monster;
      std::cout<<  move->getName() <<red<<" hit("
-     << cp << ") "<< dp << "dm" <<reset<<std::endl;
+     << attack << ") "<< demage << "dm" <<reset<<std::endl;
      //move=(!mod)?(dnd::character*)&monster:&player;
      if (move->getHP()<=0)break;
 
     }
-    //move=(mod)?(dnd::character*)&monster:&player;
-    //if (move->getHP()<=0)break;
-
-
-    /*
-     if(cg>=move->getAC()){move->damage(dg);
-std::cout << m << " attack "
-  << move->getName() <<red<<" hit(" << cg
-  << ") "<< dg << "dm" <<reset<<std::endl;
-  } else std::cout << m <<" attack  "
-    << move->getName() << yellow<<" miss("
-      << cg <<")"<<reset << std::endl;
-    */
       }
    move=mod?&player:&monster;
   //if(monster.getHP()<=0)
 std::cout << move->getName() <<red<< " kill " <<reset;
     move=!mod?&player:&monster;
-std::cout  << move->getName() << std::endl;
-//else
-//std::cout << m << red<<" kill " <<reset << move->getName() << std::endl;
-return 0;
-}
+  std::cout  << move->getName() << std::endl;
+  return 0;
+  }

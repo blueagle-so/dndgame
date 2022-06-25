@@ -108,3 +108,7 @@ void creature::heal(int value) {
 void creature::damage(int value) {
     hp -= value;
 }
+
+
+
+

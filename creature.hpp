@@ -74,6 +74,7 @@ namespace dnd {
         short ac;
         std::string alignment;
         int hp;
+        int hpmax;
         char size;
         unsigned int speed;
         std::string type;
