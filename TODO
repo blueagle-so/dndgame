@@ -52,4 +52,4 @@ V combat code(Polymorphism)(cp dp   cg dg )
     private:
    std::set<Item::type> & usableItems;
    };
-
+for commit
