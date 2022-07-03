@@ -23,8 +23,8 @@ int dndgame(int argc, char* argv[]) {
   tr=player.getTraits();
   //std::cout<< player.getLevel()<<std::endl;
   //std::cout<<player.getGp()<<std::endl;
-for(auto i : tr)
-          std::cout << i << std::endl;
+//for(auto i : tr)
+  //        std::cout << i << std::endl;
   //for(int i=0;i<tr.size();i++)
   //for (auto it = tr.begin(); it != tr.end(); ++it)
     //  {
@@ -58,7 +58,7 @@ move=mod?&player:&monster;
  move=!mod?&player:&monster;
  std::cout <<   move->getName()    <<yellow <<" miss("
  << attack <<")"<<reset << std::endl;
-
+std::cin.get();
     }else{
 
       move->damage(demage);

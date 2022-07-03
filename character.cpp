@@ -238,7 +238,12 @@ void Character::levelUp() {
 int dnd::character::attackRoll(){
 
     int attack=dnd::d20.roll();
-    attack+=(abilities.at("STR")-10)/2;
+    std::cout<<attack<<"+";
+    
+    int at=(abilities.at("STR")-10)/2;
+    std::cout<<at<<"=";
+    attack+=at;
+    std::cout<<attack<<std::endl;
     attack+=proBonus;
     return attack;
 
