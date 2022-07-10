@@ -1,9 +1,10 @@
+#include <iostream>
 template<class T>
 struct OpNewCreator
 {
      static T* Create()
 	{
-		return new T;
+		return new T(4);
 	}
 
 };
@@ -13,6 +14,6 @@ int main(){
 
 
 int *i=type.Create();
-
+std::cout<< *i <<std::endl;
 
 }
