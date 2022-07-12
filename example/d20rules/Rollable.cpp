@@ -13,16 +13,15 @@ namespace D20Rules
 	namespace Rollables
 	{
 	    Rollable::Rollable(const int iNewTotal)
-	    : iTotal(iNewTotal)
+	    : iTotal(new short int(iNewTotal))
 	    {
 	    	srand(time(NULL));
 	    }
 	    
 	    Rollable::Rollable()
-	    : iTotal(0)
+	    : iTotal(new short int(0))
 	    {
 	    	srand(time(NULL));
-	    updateTotal();
 	    }
 	    
 	    Rollable::Rollable(const Rollable &rCopy)
@@ -35,7 +34,7 @@ namespace D20Rules
 		{
 			Rollable::Result r;
 	
-			r.RollResult = 1 + rand() % 20 + iTotal;
+			r.RollResult = 1 + rand() % 20 + *iTotal;
 	
 			if ( r.RollResult == 20 )
 				r.RollResult = r.RollResult + 10;
@@ -54,7 +53,7 @@ namespace D20Rules
 		{
 			Rollable::Result r;
 		
-			r.RollResult = 1 + rand() % 20 + iTotal + accumulate(lExtraModifiers.begin(), lExtraModifiers.end(), 0);
+			r.RollResult = 1 + rand() % 20 + *iTotal + accumulate(lExtraModifiers.begin(), lExtraModifiers.end(), 0);
 		
 			if ( r.RollResult == 20 )
 				r.RollResult = r.RollResult + 10;
@@ -73,7 +72,7 @@ namespace D20Rules
 		{
 			Rollable::MultipleResults mr;
 			
-			mr.RollResult = 1 + rand() % 20 + iTotal;
+			mr.RollResult = 1 + rand() % 20 + *iTotal;
 		
 			if ( mr.RollResult == 20 )
 				mr.RollResult = mr.RollResult + 10;
@@ -94,7 +93,7 @@ namespace D20Rules
 		{
 			Rollable::MultipleResults mr;
 			
-			mr.RollResult = 1 + rand() % 20 + iTotal + accumulate(lExtraModifiers.begin(), lExtraModifiers.end(), 0);;
+			mr.RollResult = 1 + rand() % 20 + *iTotal + accumulate(lExtraModifiers.begin(), lExtraModifiers.end(), 0);;
 		
 			if ( mr.RollResult == 20 )
 				mr.RollResult = mr.RollResult + 10;
@@ -116,7 +115,7 @@ namespace D20Rules
 			int r = 0;
 		
 			for ( unsigned short int i = 0; i < iRolls; i++ )
-				r = 1 + rand() % dRollType + iTotal;
+				r = 1 + rand() % dRollType + *iTotal;
 		
 			return r < 1 ? 1 : r;
 		}
@@ -126,7 +125,7 @@ namespace D20Rules
 			int r = 0;
 		
 			for ( unsigned short int i = 0; i < iRolls; i++ )
-				r = 1 + rand() % dRollType + iTotal + accumulate(lExtraModifiers.begin(), lExtraModifiers.end(), 0);
+				r = 1 + rand() % dRollType + *iTotal + accumulate(lExtraModifiers.begin(), lExtraModifiers.end(), 0);
 		
 			return r < 1 ? 1 : r;
 		}

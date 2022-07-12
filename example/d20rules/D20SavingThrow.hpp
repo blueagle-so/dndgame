@@ -12,24 +12,27 @@ namespace D20Rules
 	{
 		class D20SavingThrow : public Rollable
 		{
-		public:
+		private:
 			D20Rules::Definitions::BaseType iBase;
-			//Loki::StrongPtr<
-			D20Rules::Definitions::ModifierType//, false> 
-				iModifier;
+		//Loki::StrongPtr<
+D20Rules::Definitions::ModifierType//, false>
+*iModifier;
 			D20Rules::Definitions::MiscType iMisc;
 			D20Rules::Definitions::MiscType iTemp;
 			
-			void updateTotal() { iTotal = iBase + iModifier + iMisc + iTemp; }
+			void updateTotal() { *iTotal = iBase + *iModifier + iMisc + iTemp; }
 		public:
 			D20SavingThrow(Definitions::BaseType iNewBase, Definitions::MiscType iNewMisc);
 			D20SavingThrow();
 			
 			inline Definitions::BaseType getBase() { return iBase; }
-			inline Definitions::ModifierType getModifier() { return iModifier; }
+			inline Definitions::ModifierType getModifier() { return *iModifier; }
+			void setModifier(short int mod){*iModifier=mod;}
+
+
 			inline Definitions::MiscType getMisc() { return iMisc; }
 			inline Definitions::MiscType getTemp() { return iTemp; }
-			inline int getTotal() { /*updateTotal();*/ return iTotal; }
+			inline int getTotal() { updateTotal(); return *iTotal; }
 			
 			void addBase(Definitions::LevelType iLevel, Definitions::SavingThrowRating strRating);
 			void removeBase(Definitions::LevelType iLevel, Definitions::SavingThrowRating strRating);

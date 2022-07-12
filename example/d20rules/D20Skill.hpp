@@ -29,7 +29,7 @@ namespace D20Rules
 
 			void updateTotal()
 			{
-				iTotal = (int) (std::ceil(fRank)) + iMisc + *(iModifier);
+				*iTotal = (int) (std::ceil(fRank)) + iMisc + *(iModifier);
 				updateSynergies();
 			}
 
@@ -47,7 +47,7 @@ namespace D20Rules
 			inline Definitions::ModifierType getModifier() const { return *(iModifier); }
 			inline std::string getName() const { return sName; }
 			inline Definitions::RelatedModifier getRelatedModifier() const { return rmModifierName; }
-			inline short int getTotal() { updateTotal(); return iTotal; }
+			inline short int getTotal() { updateTotal(); return *iTotal; }
 
 			inline void setRank(Definitions::RankType fNewRank) { fRank = fNewRank <= *(iMaxRank) ? fNewRank : fRank; }
 			inline void setMisc(Definitions::MiscType iNewMisc) { iMisc = iNewMisc; }

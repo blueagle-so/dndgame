@@ -12,7 +12,6 @@ namespace D20Rules
 	{
 		class D20ArmorClass : public D20DifficultyClass
 		{
-		public:
 			D20Rules::Definitions::ArmorBonusType iArmorBonus;
 			D20Rules::Definitions::ShieldBonusType iShieldBonus;
 			Loki::StrongPtr<D20Rules::Definitions::ModifierType, false> iDexModifier;

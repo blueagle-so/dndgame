@@ -10,9 +10,9 @@ namespace D20Rules
 	{
 		class Rollable
 		{
-		public:
+		protected:
 			//Loki::StrongPtr<
-			short int iTotal;
+			short int *iTotal;
 			
 			virtual void updateTotal() {};
 		public:

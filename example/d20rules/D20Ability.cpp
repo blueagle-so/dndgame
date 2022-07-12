@@ -6,7 +6,7 @@
 #include <functional>
 
 using namespace D20Rules::Definitions;
-//using namespace Loki;
+using namespace Loki;
 using namespace std;
 
 namespace D20Rules
@@ -14,7 +14,7 @@ namespace D20Rules
 	namespace Rollables
 	{
 		D20Ability::D20Ability()
-		: iScore(10),
+		: iScore(new D20Rules::Definitions::ScoreType(10)),
 		  iTemp(0)
 		{
 			iModifier = iTotal;
@@ -22,7 +22,7 @@ namespace D20Rules
 		
 		D20Ability::D20Ability(const ScoreType iNewScore)
 		: Rollable(calculateModifier(iNewScore)),
-		  iScore(iNewScore),
+		  iScore(new D20Rules::Definitions::ScoreType(iNewScore)),
 		  iTemp(0)
 		{
             iModifier = iTotal;
@@ -32,12 +32,12 @@ namespace D20Rules
 		{
 			if ( iNewTempScore )
 			{
-				iScore = iNewTempScore;
-				iTemp = iNewTempScore - iScore;
+				*iScore = iNewTempScore;
+				iTemp = iNewTempScore - *iScore;
 			}
 			else
 			{
-				iScore -= iTemp;
+				*iScore -= iTemp;
 				iTemp = 0;
 			}
 			
@@ -46,7 +46,7 @@ namespace D20Rules
 		
 		void D20Ability::rollAbility()
 		{
-         	iTotal = 0;
+         	*iTotal = 0;
 
          	vector<ScoreType> v;
          	v.push_back(Roll(d6, 1));

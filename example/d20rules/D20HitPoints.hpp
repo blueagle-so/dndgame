@@ -14,8 +14,8 @@ namespace D20Rules
 		{
 		private:
 			//Loki::StrongPtr<
-		D20Rules::Definitions::ModifierType//, false> 
-			iConModifier;
+D20Rules::Definitions::ModifierType//, false> 
+* iConModifier;
 
 			D20Rules::Definitions::HPType iMaxHP;
 			D20Rules::Definitions::HPType iTempHP;

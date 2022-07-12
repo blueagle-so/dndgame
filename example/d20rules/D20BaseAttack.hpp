@@ -23,7 +23,7 @@ namespace D20Rules
         	Loki::StrongPtr<D20Rules::Definitions::ModifierType, false> iMeeleModifier;
         	Loki::StrongPtr<D20Rules::Definitions::ModifierType, false> iRangeModifier;
 			
-			void updateTotal() { iTotal = *iterAttacks + iMiscModifier + iSizeModifier; }
+			void updateTotal() { *iTotal = *iterAttacks + iMiscModifier + iSizeModifier; }
 			
 			std::list<Definitions::BaseAttackType> lAttacks;
 			std::list<Definitions::BaseAttackType>::iterator iterAttacks;
@@ -32,8 +32,8 @@ namespace D20Rules
             
             void calculateBaseAttack(Definitions::LevelType iLevel, Definitions::BaseAttackRating barRating);
             
-			inline short getMeleeBaseAttack() { updateTotal(); return iTotal + *(iMeeleModifier); }
-			inline short int getRangeBaseAttack() { updateTotal(); return iTotal + *(iMeeleModifier) + iRangePenaltyModifier; }
+			inline short getMeleeBaseAttack() { updateTotal(); return *iTotal + *(iMeeleModifier); }
+			inline short int getRangeBaseAttack() { updateTotal(); return *iTotal + *(iMeeleModifier) + iRangePenaltyModifier; }
 			
 			inline void nextBaseAttack() { iterAttacks++; if ( iterAttacks == lAttacks.end() ) iterAttacks = lAttacks.begin()++; }
 			

@@ -11,7 +11,6 @@ namespace D20Rules
 	{
 		D20Abilities::D20Abilities()
 		{
-		rollAbilities();
 		}
 		
 		short int D20Abilities::rollAbilities()
