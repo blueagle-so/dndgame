@@ -14,10 +14,13 @@ namespace D20Rules
 		class D20Ability : public Rollable
 		{
 		private:
+			
 			Loki::StrongPtr<D20Rules::Definitions::ScoreType> iScore;
-			//Loki::StrongPtr<
+	public:			
+		//Loki::StrongPtr<
 D20Rules::Definitions::ModifierType//, false> 
 *iModifier;
+		
 			D20Rules::Definitions::ScoreType iTemp;
 			
 			inline Definitions::ModifierType calculateModifier(const Definitions::ScoreType iScore) const { return (iScore - 10 - (iScore % 2)) / 2; }
@@ -45,7 +48,7 @@ D20Rules::Definitions::ModifierType//, false>
 					\date 2004
 					\brief The function returns the modifier of the ability.
 			*/
-			inline Definitions::ModifierType getModifier() { updateTotal(); return *iTotal; }
+			inline Definitions::ModifierType* getModifier() {updateTotal();short int *i=iTotal; return i; }
 					
 			/*! \author Omer Katz
 					\date 2004

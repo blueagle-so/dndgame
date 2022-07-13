@@ -11,6 +11,7 @@ namespace D20Rules
 	{
 		D20Abilities::D20Abilities()
 		{
+			rollAbilities();
 		}
 		
 		short int D20Abilities::rollAbilities()
@@ -22,7 +23,7 @@ namespace D20Rules
             Intelligence.rollAbility();
             Charisma.rollAbility();
             
-            return Strength.getModifier() + Dexterity.getModifier() + Constitution.getModifier() + Wisdom.getModifier() + Intelligence.getModifier() + Charisma.getModifier();
+            //return Strength.getModifier() + Dexterity.getModifier() + Constitution.getModifier() + Wisdom.getModifier() + Intelligence.getModifier() + Charisma.getModifier();
         }
 	}
 }		

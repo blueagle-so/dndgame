@@ -16,7 +16,7 @@ namespace D20Rules
 		D20Ability::D20Ability()
 		: iScore(new D20Rules::Definitions::ScoreType(10)),
 		  iTemp(0)
-		{
+		{	//rollAbility();
 			iModifier = iTotal;
 		}
 		

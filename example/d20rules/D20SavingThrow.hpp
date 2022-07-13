@@ -14,21 +14,21 @@ namespace D20Rules
 		{
 		private:
 			D20Rules::Definitions::BaseType iBase;
+		public:	
 		//Loki::StrongPtr<
 D20Rules::Definitions::ModifierType//, false>
-*iModifier;
+*iModifier;	
+		
 			D20Rules::Definitions::MiscType iMisc;
 			D20Rules::Definitions::MiscType iTemp;
-			
 			void updateTotal() { *iTotal = iBase + *iModifier + iMisc + iTemp; }
-		public:
+		//public:
 			D20SavingThrow(Definitions::BaseType iNewBase, Definitions::MiscType iNewMisc);
 			D20SavingThrow();
 			
 			inline Definitions::BaseType getBase() { return iBase; }
 			inline Definitions::ModifierType getModifier() { return *iModifier; }
-			void setModifier(short int mod){*iModifier=mod;}
-
+			void setModifier(short int &i){iModifier= (short int*)& i;}
 
 			inline Definitions::MiscType getMisc() { return iMisc; }
 			inline Definitions::MiscType getTemp() { return iTemp; }

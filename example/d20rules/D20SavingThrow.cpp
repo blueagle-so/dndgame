@@ -19,7 +19,6 @@ namespace D20Rules
 		  iTemp(0)
 		{
 		}
-		
 		void D20SavingThrow::addBase(LevelType iLevel, SavingThrowRating strRating)
 		{
 			BaseType iCurrentBase = iBase;
