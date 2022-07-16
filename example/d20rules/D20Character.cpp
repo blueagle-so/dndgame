@@ -5,8 +5,8 @@ namespace D20Rules
     D20Character::D20Character()
     {
 		//SavingThrows.Fortitude.iModifier = Abilities.Constitution.iModifier;
-	SavingThrows.Reflex.iModifier=Abilities.Dexterity.getModifier();
-        SavingThrows.Will.iModifier=Abilities.Wisdom.iModifier;
+	SavingThrows.Reflex.setModifier(Abilities.Dexterity.getModifier());
+        SavingThrows.Will.iModifier=Abilities.Wisdom.getModifier();
         
         //ArmorClass.iDexModifier = Abilities.Dexterity.iModifier;
     }

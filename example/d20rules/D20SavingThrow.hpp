@@ -28,7 +28,7 @@ D20Rules::Definitions::ModifierType//, false>
 			
 			inline Definitions::BaseType getBase() { return iBase; }
 			inline Definitions::ModifierType getModifier() { return *iModifier; }
-			void setModifier(short int &i){iModifier= (short int*)& i;}
+			void setModifier(short int *i){iModifier=(short int *)i;}
 
 			inline Definitions::MiscType getMisc() { return iMisc; }
 			inline Definitions::MiscType getTemp() { return iTemp; }
