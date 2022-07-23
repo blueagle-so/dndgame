@@ -19,10 +19,12 @@ namespace D20Rules
 		{
 		}
 		
-		list<StrongPtr<D20Skill, false> > D20Skills::getSkillsByModifier(const RelatedModifier rmModifierName)
+		list<//StrongPtr<
+D20Skill* > D20Skills::getSkillsByModifier(const RelatedModifier rmModifierName)
 		{
-			list<StrongPtr<D20Skill, false> > lSkillsList;
-			for ( map<string, StrongPtr<D20Skill> >::iterator iter = mapSkills.begin(); iter != mapSkills.end(); ++iter )
+			list<//StrongPtr<
+	D20Skill* > lSkillsList;
+			for ( map<string, D20Skill* >::iterator iter = mapSkills.begin(); iter != mapSkills.end(); ++iter )
 				if ( iter->second->getRelatedModifier() == rmModifierName )
 					lSkillsList.push_back(iter->second);
 					
@@ -32,7 +34,7 @@ namespace D20Rules
 		unsigned short int D20Skills::getTotalSkillPoints()
 		{
 			unsigned short int iSum = 0;
-			for ( map<string, StrongPtr<D20Skill> >::iterator iter = mapSkills.begin(); iter != mapSkills.end(); ++iter)
+			for ( map<string, D20Skill* >::iterator iter = mapSkills.begin(); iter != mapSkills.end(); ++iter)
 				iSum += (unsigned short int) ceil(iter->second->getRank());
 				
 			return iSum;
