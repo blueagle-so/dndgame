@@ -1,7 +1,7 @@
 #ifndef __D20DifficultyClass
 #define __D20DifficultyClass
 
-#include <loki/SmartPtr.h>
+//#include <loki/SmartPtr.h>
 
 namespace D20Rules
 {
@@ -10,7 +10,8 @@ namespace D20Rules
 		class D20DifficultyClass
 		{
 		protected:
-			Loki::SmartPtr<short int> iTotal;
+			//Loki::SmartPtr<
+	short int * iTotal;
 
 			virtual void updateTotal() = 0;
 		public:

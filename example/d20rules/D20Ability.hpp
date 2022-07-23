@@ -15,8 +15,9 @@ namespace D20Rules
 		{
 		private:
 			
-			Loki::StrongPtr<D20Rules::Definitions::ScoreType> iScore;
-	public:			
+		//	Loki::StrongPtr<
+D20Rules::Definitions::ScoreType *iScore;
+		
 		//Loki::StrongPtr<
 D20Rules::Definitions::ModifierType//, false> 
 *iModifier;

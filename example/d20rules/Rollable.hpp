@@ -3,6 +3,7 @@
 
 #include <list>
 #include "GlobalDef.hpp"
+#include <time.h>
 
 namespace D20Rules
 {

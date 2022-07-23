@@ -6,9 +6,9 @@
 	#define Version "3.5"
 #endif
 
-#include <loki/SmartPtr.h>
-#include <loki/StrongPtr.h>
-
+//#include <loki/SmartPtr.h>
+//#include <loki/StrongPtr.h>
+#include <cstddef>
 namespace D20Rules
 {
 	namespace Definitions

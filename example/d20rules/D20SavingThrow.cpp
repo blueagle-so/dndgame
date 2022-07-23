@@ -2,7 +2,7 @@
 #include "D20SavingThrow.hpp"
 
 using namespace D20Rules::Definitions;
-using namespace Loki;
+//using namespace Loki;
 
 namespace D20Rules
 {
