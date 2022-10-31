@@ -14,7 +14,9 @@ namespace D20Rules
 		{
 			D20Rules::Definitions::ArmorBonusType iArmorBonus;
 			D20Rules::Definitions::ShieldBonusType iShieldBonus;
-			Loki::StrongPtr<D20Rules::Definitions::ModifierType, false> iDexModifier;
+			//Loki::StrongPtr<
+D20Rules::Definitions::ModifierType//, false> 
+* iDexModifier;
 			D20Rules::Definitions::SizeModifierType iSize;
 			D20Rules::Definitions::NaturalArmorBonusType iNaturalArmor;
 			D20Rules::Definitions::DefelectionModifierType iDeflection;

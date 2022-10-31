@@ -6,7 +6,7 @@
 #include <functional>
 
 using namespace D20Rules::Definitions;
-using namespace Loki;
+//using namespace Loki;
 using namespace std;
 
 namespace D20Rules

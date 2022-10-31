@@ -14,7 +14,8 @@ namespace D20Rules
 		class D20Skill : public Rollable
 		{
 		private:
-			Loki::StrongPtr<unsigned short int, false> iMaxRank;
+			//Loki::StrongPtr<
+			unsigned short int *iMaxRank;
 
 			const bool bUsedUntrained;
 			const bool bClassSkill;
@@ -23,7 +24,7 @@ namespace D20Rules
 
 			const std::string sName;
 			const D20Rules::Definitions::RelatedModifier rmModifierName;
-			Loki::StrongPtr<D20Rules::Definitions::ModifierType, false> iModifier;
+			D20Rules::Definitions::ModifierType *iModifier;
 			D20Rules::Definitions::RankType fRank;
 			D20Rules::Definitions::MiscType iMisc;
 
@@ -53,7 +54,7 @@ namespace D20Rules
 			inline void setMisc(Definitions::MiscType iNewMisc) { iMisc = iNewMisc; }
 
 			template <class DataType, class SourceType>
-			friend Loki::StrongPtr<DataType, false> D20Rules::Definitions::getData(SourceType &obj);
+			friend DataType D20Rules::Definitions::getData(SourceType &obj);
 		};
 	}
 }

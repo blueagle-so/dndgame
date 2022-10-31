@@ -1,7 +1,7 @@
 #ifndef _D20BaseAttack
 #define _D20BaseAttack
 
-#include <loki/StrongPtr.h>
+//#include <loki/StrongPtr.h>
 #include <list>
 #include <queue>
 #include "Rollable.hpp"
@@ -20,8 +20,12 @@ namespace D20Rules
         	D20Rules::Definitions::SizeModifierType iSizeModifier;
         	D20Rules::Definitions::RangePenaltyType iRangePenaltyModifier;
 
-        	Loki::StrongPtr<D20Rules::Definitions::ModifierType, false> iMeeleModifier;
-        	Loki::StrongPtr<D20Rules::Definitions::ModifierType, false> iRangeModifier;
+        	//Loki::StrongPtr<
+D20Rules::Definitions::ModifierType//, false> 
+*iMeeleModifier;
+        	//Loki::StrongPtr<
+D20Rules::Definitions::ModifierType//, false> 
+*iRangeModifier;
 			
 			void updateTotal() { *iTotal = *iterAttacks + iMiscModifier + iSizeModifier; }
 			

@@ -14,7 +14,7 @@ namespace D20Rules
 		{
 		private:
 			D20Rules::Definitions::BaseType iBase;
-		public:	
+		
 		//Loki::StrongPtr<
 D20Rules::Definitions::ModifierType//, false>
 *iModifier;	
@@ -22,7 +22,7 @@ D20Rules::Definitions::ModifierType//, false>
 			D20Rules::Definitions::MiscType iMisc;
 			D20Rules::Definitions::MiscType iTemp;
 			void updateTotal() { *iTotal = iBase + *iModifier + iMisc + iTemp; }
-		//public:
+		public:
 			D20SavingThrow(Definitions::BaseType iNewBase, Definitions::MiscType iNewMisc);
 			D20SavingThrow();
 			

@@ -14,15 +14,18 @@ namespace D20Rules
 		class D20Skills
 		{
 		private:
-			std::map<std::string, Loki::StrongPtr<D20Rules::Rollables::D20Skill> > mapSkills;
+			std::map<std::string, //Loki::StrongPtr<
+D20Rules::Rollables::D20Skill* > mapSkills;
 			
 			unsigned short int iMaxSkillsPoints;
 		public:
 			D20Skills();
 			
-			inline Loki::StrongPtr<Rollables::D20Skill, false> operator [](const std::string sSkillName) { return mapSkills.find(sSkillName) != mapSkills.end() ? mapSkills[sSkillName] : NULL; }
+			inline //Loki::StrongPtr<
+Rollables::D20Skill* operator [](const std::string sSkillName) { return mapSkills.find(sSkillName) != mapSkills.end() ? mapSkills[sSkillName] : NULL; }
 			
-			std::list<Loki::StrongPtr<Rollables::D20Skill, false> > getSkillsByModifier(const Definitions::RelatedModifier rmModifierName);
+			std::list<//Loki::StrongPtr<
+Rollables::D20Skill* > getSkillsByModifier(const Definitions::RelatedModifier rmModifierName);
 			unsigned short int getTotalSkillPoints();
 			inline unsigned short int getMaxSkillPoints() { return iMaxSkillsPoints; }
 		};

@@ -6,9 +6,9 @@
 	#define Version "3.5"
 #endif
 
-#include <loki/SmartPtr.h>
-#include <loki/StrongPtr.h>
-
+//#include <loki/SmartPtr.h>
+//#include <loki/StrongPtr.h>
+#include <cstddef>
 namespace D20Rules
 {
 	namespace Definitions
@@ -124,7 +124,8 @@ namespace D20Rules
         };
         
 		template <class DataType, class SourceType>
-		Loki::StrongPtr<DataType, false> getData(SourceType &obj)
+		//Loki::StrongPtr
+		DataType getData(SourceType &obj)
 		{
 			return obj.Data;
 		}
