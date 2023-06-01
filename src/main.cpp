@@ -7,8 +7,61 @@
 #include "../include/race.hpp"
 #include "../include/background.hpp"
 #include "../include/character.hpp"
-#define dndgame main
-int dndgame(int argc, char* argv[]) {
+//#define dndgame main
+
+enum PlayerClass {
+    WARRIOR, PRIEST, MAGE, 
+};
+class Stats{
+public:
+Stats(int hp, int mp,
+             int strength, int agility, int resilience, int deftness,
+             int charm, int magical_mending, int magical_might) {
+
+    this->hp = hp;
+    this->mp = mp;
+    this->strength = strength;
+    this->agility = agility;
+    this->resilience = resilience;
+    this->deftness = deftness;
+    this->charm = charm;
+    this->magical_mending = magical_mending;
+    this->magical_might = magical_might;
+}
+    int hp;
+    int mp;
+    int strength;
+    int agility;
+    int resilience;
+    int deftness;
+    int charm;
+    int magical_mending;
+    int magical_might;
+};
+
+std::map<PlayerClass, Stats*> classToStats = {
+{PlayerClass::WARRIOR, new Stats(26, 4, 18, 4, 18, 5, 4, 0, 0)},
+{PlayerClass::PRIEST, new Stats(19, 14, 9, 14, 9, 9, 7, 18, 0)}
+    // ...
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int main(int argc, char* argv[]) {
   dnd::creature monster("goblin",15,"neutral evil",7,'S',30,"goblinoid",8,14,10,10,8,8);
    dnd::character player("Vladislak Marsk","WIZARD","HIGH ELF","ACOLYTE",0,10,10,10,10,10,10,false,1);
   dnd::creature* move=new dnd::creature();
@@ -16,9 +69,6 @@ int dndgame(int argc, char* argv[]) {
   player.setArmor("LEATHER");
   move = &monster;
   int attack,demage;
-  const std::string red("\033[0;31m");
-  const std::string yellow("\033[0;33m");
-  const std::string reset("\033[0m");
   std::set <std::string>tr;
   tr=player.getTraits();
   //std::cout<< player.getLevel()<<std::endl;
@@ -44,8 +94,14 @@ int dndgame(int argc, char* argv[]) {
 
 
 bool mod=false;
-  while(1){
-   mod=!mod;
+/*  while(1){
+   
+
+
+
+
+
+  mod=!mod;
    attack=mod?player.attackRoll():(dnd::d20.roll()+4);
    demage=mod?player.damageRoll():(dnd::d6.roll()+2);
     //ap=monster.getAC();
@@ -73,9 +129,11 @@ std::cin.get();
 
     }
       }
+
+      */
    move=mod?&player:&monster;
   //if(monster.getHP()<=0)
-std::cout << move->getName() <<red<< " kill " <<reset;
+std::cout << move->getName() << " kill " ;
     move=!mod?&player:&monster;
   std::cout  << move->getName() << std::endl;
   return 0;
